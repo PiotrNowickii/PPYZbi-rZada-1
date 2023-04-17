@@ -76,11 +76,12 @@ print(w_5)
 #jakikolwiek znak wystąpił dokładnie 3 razy. Wyświetl Tak jeżeli wystąpił,
 #Nie jeżeli nie wystąpił.
 #1 pkt
-
+decision = ""
 if 3 in w_5.values():
-    w_6 = "Tak"
+    decision = "Tak"
 else:
-    w_6 = "Nie"
+    decision = "Nie"
+w_6 = decision
 print(w_6)
 
 #7. Napisz funkcję sprawdzającą czy podane słowa/zdania są palindromem
@@ -116,7 +117,18 @@ print(palindrom(s_7_1))
 #2 pkt
 
 def fizzbuzz(n):
-    pass
+    fizz_buzz_numbers = ""
+    for i in range(1,n + 1):
+        if i % 3 == 0 and i % 5 == 0:
+            fizz_buzz_numbers += "FizzBuzz,"
+        elif i % 3 == 0:
+            fizz_buzz_numbers += "Fizz,"
+        elif i % 5 == 0:
+            fizz_buzz_numbers += "Buzz,"
+        else:
+            fizz_buzz_numbers += str(i) + ","
+    return fizz_buzz_numbers[:-1]
+
 
 n_8 = 16
 print(fizzbuzz(n_8))
@@ -127,7 +139,17 @@ print(fizzbuzz(n_8))
 
 n_9 = 6
 def fibonacci(n):
-    pass
+    if n == 0:
+        return 0
+    elif n == 1:
+        return 1
+    f_one = 1
+    f_two = 0
+    for i in range (2, n+1):
+        f_one = f_one + f_two
+        f_two = f_one - f_two
+    return f_one
+
 print(fibonacci(n_9))
 
 #10. Napisz funkcję, która dla podanej posortowanej listy
@@ -137,7 +159,16 @@ print(fibonacci(n_9))
 
 
 def binary_search(lista, e):
-    pass
+    first_index = 0
+    last_index = len(lista) - 1
+    while last_index >= first_index:
+        middle_index = int((first_index + last_index) / 2)
+        if lista[middle_index] > e:
+            last_index = middle_index - 1
+        elif lista[middle_index] < e:
+            first_index = middle_index + 1
+        elif lista[middle_index] == e:
+            return lista[middle_index]
 
 l_10 = [0,2,4,8,16,32,64,128,256,512,1024,2048,4096,8192,16384,32768]
 print(binary_search(l_10, 2))
